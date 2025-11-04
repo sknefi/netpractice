@@ -29,6 +29,85 @@ Usable IPs = Total - 2   (network + broadcast)
 Example:
 `/24` → 2⁸ = 256 total → 254 usable.
 
+### 🧮 2.1. Understanding the Relationship (Visual Explanation)
+
+Each IPv4 address has **32 bits** (4 octets × 8 bits).
+
+#### Example — IP & Mask in Binary
+
+```
+IP Address:   192.168.1.25
+Subnet Mask:  255.255.255.192 (/26)
+```
+
+#### 🧩 Step 1 — Convert to Binary
+
+| Decimal | Binary   |
+| ------- | -------- |
+| 192     | 11000000 |
+| 168     | 10101000 |
+| 1       | 00000001 |
+| 25      | 00011001 |
+
+✅ **192.168.1.25 →**
+
+```
+11000000.10101000.00000001.00011001
+```
+
+✅ **255.255.255.192 →**
+
+```
+11111111.11111111.11111111.11000000
+```
+
+#### 🧠 Step 2 — Highlight Network vs Host Bits
+
+`/26` means **26 bits** are for the **network**, and the remaining **6 bits** are for **hosts**.
+
+```
+Network bits → 11111111.11111111.11111111.11
+Host bits    → 000000
+```
+
+or visually:
+
+```
+11111111.11111111.11111111.11|000000
+↑                            ↑
+Nework part (26 bits)        Host part (6 bits)
+```
+
+#### 📘 Step 3 — What It Means
+
+First 26 bits (network) are the same for all devices in this subnet.
+
+Last 6 bits (host) can vary → 2⁶ = 64 total IPs per subnet.
+
+Two addresses are reserved:
+
+* All 0s → network address
+* All 1s → broadcast address
+
+#### 🧮 Step 4 — Binary Ranges
+
+```
+Network part: 11000000.10101000.00000001.01|000000 → 192.168.1.64
+Broadcast:    11000000.10101000.00000001.01|111111 → 192.168.1.127
+```
+
+So this `/26` subnet goes from **192.168.1.64 → 192.168.1.127** with **usable IPs** `.65 → .126`.
+
+### 🔎 Summary Visualization
+
+| Part      | Binary Pattern                | Example Decimal | Meaning              |
+| --------- | ----------------------------- | --------------- | -------------------- |
+| Network   | 11000000.10101000.00000001.01 | 192.168.1.64    | Identifies subnet    |
+| Host      | 000000 → 111111               | 0–63            | Device variation     |
+| Broadcast | All host bits = 1             | 192.168.1.127   | Sends to all devices |
+
+---
+
 ## 📐 3. CIDR to Subnet Mask Table
 
 | CIDR | Subnet Mask     | Block Size | Usable Hosts | Step in 4th Octet |
