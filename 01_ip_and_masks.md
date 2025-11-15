@@ -84,6 +84,25 @@ Example for `192.168.1.0/24`:
 | Host Range | 192.168.1.1 – 192.168.1.254 | usable for devices                      |
 | Broadcast  | 192.168.1.255               | sends data to all devices on the subnet |
 
+### 🔢 Binary Breakdown Example
+
+Looking at the bits makes it crystal clear which parts belong to the network and which belong to the hosts:
+
+```
+IP:     11000000.10101000.00001010.01001001
+Mask:   11111111.11111111.11111111.11100000
+        |>----------------------------|>---
+        NETWORK                       HOSTBITS
+
+01001001   ← last octet of IP
+11100000   ← mask last octet
+
+---xxxxxx  ← x = host bits (can change)
+
+111000000 → network address
+111111111 → broadcast address
+```
+
 ## 🧭 6. Communication Between Devices
 
 Two devices can communicate **directly** only if:
@@ -129,4 +148,3 @@ PC2: 192.168.2.10/24
 3. Why can’t `192.168.1.10/24` and `192.168.2.10/24` communicate directly?
 4. What does NAT do in a home network?
 5. What’s the difference between a private and public IP?
-
