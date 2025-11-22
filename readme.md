@@ -43,6 +43,15 @@ topic you need while debugging a map or answering theory questions.
 - **Return traffic reminder**: both directions need a route (either explicit or a
   default) or pings will succeed only one way.
 
+## Visual Cheatsheet (Levels 07–10)
+
+IP placements and color-coded subproblems for the later NetPractice maps:
+
+- Level 07: ![Level 07 diagram](docs/done7.png)
+- Level 08: ![Level 08 diagram](docs/done8.png)
+- Level 09: ![Level 09 diagram](docs/done9.png)
+- Level 10: ![Level 10 diagram](docs/done10.png)
+
 ---
 
 ## Practice Flow
@@ -54,4 +63,5 @@ topic you need while debugging a map or answering theory questions.
 5. Answer the practice questions at the end of each chapter to lock the concept
    in before moving on.
 
-Happy subnetting! 🧠💡
+Enjoy subnetting, designed with ☕️ by Filip Karika.
+
